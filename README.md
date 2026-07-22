@@ -1,8 +1,8 @@
-# JATAYU Controller
+# J-Deck
 
 <p align="center">
-  <strong>An ESP32-C3 powered, ESP-NOW drone remote for the JATAYU Flight Controller.</strong><br />
-  Compact in your hands. Fast on the link. Built for flight.
+  <strong>An ESP32-C3 wireless controller for JATAYU and any Wi-Fi, Bluetooth, or ESP-NOW project.</strong><br />
+  Compact in your hands. Fast on the link. Built to control.
 </p>
 
 <p align="center">
@@ -12,30 +12,42 @@
   <img src="https://img.shields.io/badge/status-Hardware%20Design-8B5CF6?style=for-the-badge" alt="Hardware design" />
 </p>
 
-<p align="center"><img src="ASSets/Front.png" alt="JATAYU Controller hero image - assembled remote" width="800" /></p>
+![J-Deck hero image - assembled remote](ASSets/Front.png)
 
-## Built for the JATAYU ecosystem
+## Built for JATAYU. Ready for anything.
 
-JATAYU Controller is a purpose-built handheld transmitter designed to talk directly to the **JATAYU Flight Controller**. It reads pilot inputs from twin analog joysticks and tactile controls, then sends compact control data over **ESP-NOW** - Espressif's low-latency, connectionless wireless protocol.
+J-Deck is a purpose-built handheld wireless controller. Its primary role is to talk directly to the **JATAYU Flight Controller**, reading pilot inputs from twin analog joysticks and tactile controls before sending compact control data over **ESP-NOW**.
 
-No router. No Bluetooth pairing screen. Just power on, link up, and fly.
+But it is not limited to flight. With its ESP32-C3 radio and programmable firmware, J-Deck can be adapted as a controller for robots, RC vehicles, smart-home projects, camera rigs, simulators, or any device that communicates through **Wi-Fi**, **Bluetooth Low Energy (BLE)**, or **ESP-NOW**.
+
+No router is required for ESP-NOW. For other projects, choose the wireless mode and control protocol that best fits the device you are building.
 
 > This repository contains the KiCad hardware design for the controller. Firmware, final protocol definitions, pin mappings, and flight-safety behaviour should be kept versioned alongside the matching JATAYU Flight Controller project.
 
+## Wireless modes
+
+| Mode | Great for | Typical connection |
+| --- | --- | --- |
+| ESP-NOW | Responsive device-to-device control, including JATAYU | Direct peer-to-peer packets; no access point required |
+| Wi-Fi | Web dashboards, LAN-connected devices, and IoT projects | Connect through an access point or run a local access point |
+| Bluetooth LE | Phones, tablets, and low-power nearby peripherals | BLE pairing and GATT services |
+
+The controller hardware stays the same; the firmware defines the selected radio mode, packet format, mapping, and receiver behaviour.
+
 ## The link
 
-<p align="center"><img src="ASSets/FRONT%20FRONT.png" alt="ESP-NOW telemetry flow - range test or protocol graphic" width="700" /></p>
+![ESP-NOW telemetry flow placeholder - replace with a protocol or range-test graphic](ASSets/FRONT%20FRONT.png)
 
 ```text
-[JATAYU Controller] -- ESP-NOW control packets --> [JATAYU Flight Controller]
-[JATAYU Controller] <-- optional telemetry ----- [JATAYU Flight Controller]
+[J-Deck] -- ESP-NOW control packets --> [JATAYU Flight Controller]
+[J-Deck] <-- optional telemetry ----- [JATAYU Flight Controller]
 ```
 
 ESP-NOW is a strong fit for a dedicated RC link because it operates without a conventional Wi-Fi access point and keeps the radio exchange focused on the aircraft. The exact packet format, peer MAC addresses, update rate, channel, checksum, and failsafe timeout are firmware decisions - document them here when the flight stack is locked.
 
 ## Hardware
 
-<p align="center"><img src="ASSets/BACK.png" alt="PCB render or assembled controller photo" width="700" /></p>
+![PCB render placeholder - replace with front/back board render or assembled-controller photo](ASSets/BACK.png)
 
 | Feature | Design choice |
 | --- | --- |
