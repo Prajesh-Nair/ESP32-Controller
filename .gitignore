@@ -1,0 +1,12 @@
+# Ignore backup folders
+JATAYU-Controller-backups/
+
+# Ignore cache
+fp-info-cache
+
+# Ignore component folders
+FS8205A/
+COM-09032/
+
+# Ignore lock files
+*.lck
