@@ -5,8 +5,9 @@ JATAYU-Controller-backups/
 fp-info-cache
 
 # Ignore component folders
-FS8205A/
-COM-09032/
+# Ignore component folders (top-level only)
+/FS8205A/
+/COM-09032/
 
 # Ignore lock files
 *.lck
